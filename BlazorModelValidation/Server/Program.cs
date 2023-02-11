@@ -1,4 +1,5 @@
-using Microsoft.AspNetCore.ResponseCompression;
+using BlazorModelValidation.Server.Services;
+using BlazorModelValidation.Shared;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -6,6 +7,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
+
+builder.Services.AddSingleton<IMessagesService, MessagesService>();
 
 var app = builder.Build();
 
