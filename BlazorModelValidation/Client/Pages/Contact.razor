@@ -8,7 +8,9 @@
 
 <h1>Contact</h1>
 
-<EditForm Model="@message" OnSubmit="@HandleSubmit">
+<EditForm Model="@message" OnValidSubmit="@HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
     <div class="form-group">
         <label for="name">Name</label>
         <InputText class="form-control" id="name" @bind-Value="message.Name" />
@@ -31,7 +33,7 @@
 @code {
     private Message message = new();
 
-    private async Task HandleSubmit()
+    private async Task HandleValidSubmit()
     {
         try {
             await MessagesService.SendMessage(message);
